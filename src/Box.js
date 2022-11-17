@@ -18,8 +18,10 @@ function Box({width, height, backgroundColor, deleteMe}) {
     backgroundColor
   };
   return (
-    <div styles={myStyles} />
-    <button click={deleteMe}>X</button>
+    <div className="Box">
+      <div styles={myStyles} />
+      <button click={deleteMe}>X</button>
+    </div>
   )
 }
 

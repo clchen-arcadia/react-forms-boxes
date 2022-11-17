@@ -18,39 +18,28 @@ import { v4 as uuid } from "uuid";
 function BoxList() {
   const [boxes, setBoxes] = useState([]);
 
-  function onSubmit() {
-    const newBox = {
-      id: uuid(),
-      height: ,
-      width: ,
-      backgroundColor: ,
-    };
-    setBoxes(boxes => [...boxes, newBox]);
-  };
-
   function deleteMe(id) {
     const filteredBoxes = boxes.filter((box, idx) => box.id === id);
-    setBoxes( () => filteredBoxes );
+    setBoxes(() => filteredBoxes);
   }
 
-
-  function addItem(item) {
-    boxes.push(item); //?????
+  function addItem(formData) {
+    setBoxes((b) => b.push(formData));
   }
 
   return (
-    <NewBoxForm addItem={addItem}/>
-    {
-    boxes.map(b => {
-      <Box
-        key={ }
-        width={b.width}
-        height={b.height}
-        backgroundColor={b.backgroundColor}
-        deleteMe={() => deleteMe(b.id)}
-      />;
-    });
-  }
+    <div className="BoxList">
+      <NewBoxForm addItem={addItem} />
+      {boxes.map((b) => {
+        <Box
+          key={b.id}
+          width={b.width + "px"}
+          height={b.height + "px"}
+          backgroundColor={b.backgroundColor}
+          deleteMe={() => deleteMe(b.id)}
+        />;
+      })}
+    </div>
   );
 }
 
